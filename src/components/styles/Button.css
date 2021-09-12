@@ -22,5 +22,5 @@
 }
 
 .styleButton:active{
-    transform: scale(.99);
+    transform: scale(.75);
 }
