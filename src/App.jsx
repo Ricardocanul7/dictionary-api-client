@@ -1,11 +1,41 @@
 import './App.css';
 import Button from './components/Button';
-import List from './components/List';
+import Select from './components/Select';
 import { useState } from 'react';
 import Dropdown from './components/Dropdown';
 
 function App() {
   const [counter, setCounter] = useState(0);
+
+  const options = [
+    {
+      value: "1",
+      label: "Option 1",
+    },
+    {
+      value: "2",
+      label: "Option 2",
+    },
+    {
+      value: "3",
+      label: "Option 3",
+    },
+    {
+      value: "4",
+      label: "Option  4",
+    },
+  ];
+
+  const options2 = [
+    {
+      value: "1",
+      label: "Prueba 1",
+    },
+    {
+      value: "2",
+      label: "Prueba 2",
+    },
+  ]
 
   const handleSum = () => {
     setCounter(counter + 1);
@@ -18,9 +48,19 @@ function App() {
   const handleSumByNumber = (number) => {
     setCounter(counter + number);
   }
-  const handleOptionSelect = () =>{
 
+  const handleOnSelected = (value) => {
+    console.log("Select 1 " + value);
   }
+
+  const handleOnseleted2 = (value) => {
+    console.log("Select 2 " + value);
+  }
+
+  const handleDropdown = (value) => {
+    console.log(value);
+  }
+  
   return (
     <div className="App">
       { counter }
@@ -31,8 +71,10 @@ function App() {
         <Button text="+5" setClick={() => handleSumByNumber(5)} />
       </div>
       <div>
-        <List></List>
-        <Dropdown></Dropdown>
+        <Select items={options} name="Select 1" onSelected={handleOnSelected} />
+        <Select items={options2} name="Select 2" onSelected={handleOnseleted2} />
+
+        <Dropdown items={options2} name="Dropdown 2" onSelected={handleDropdown}/>
       </div>
       
     </div>

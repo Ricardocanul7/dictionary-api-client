@@ -1,11 +1,11 @@
 import React from 'react'
 import './styles/Dropdown.css'
-const Dropdown = () => {
+const Dropdown = ({ items, name, onSelected }) => {
     return (
         <>
-            <div class="dropdowncls">
-                <button class="dropbtn">Dropdown</button>
-                    <div class="dropdown-content">
+            <div className="dropdowncls">
+                <button className="dropbtn">Dropdown</button>
+                    <div className="dropdown-content">
                         <a href="#">Link 1</a>
                         <a href="#">Link 2</a>
                         <a href="#">Link 3</a>
