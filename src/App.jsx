@@ -1,6 +1,7 @@
 import './App.css';
 import Button from './components/Button';
 import Header from './components/Header';
+import InputSearch from './components/InputSearch';
 import { useState } from 'react';
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
         <Button text="+" setClick={handleSum} />
         <Button text="+5" setClick={() => handleSumByNumber(5)} />
       </div>
+      <br />
+      <InputSearch placeholder="Buscar..." />
     </div>
   );
 }
