@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles/Dropdown.css'
-const dropdown = () => {
+const Dropdown = () => {
     return (
         <>
             <div class="dropdowncls">
@@ -15,4 +15,4 @@ const dropdown = () => {
     )
 }
 
-export default dropdown
+export default Dropdown
