@@ -2,7 +2,7 @@ import './App.css';
 import Button from './components/Button';
 import List from './components/List';
 import { useState } from 'react';
-import Dropdown from './components/dropdown';
+import Dropdown from './components/Dropdown';
 
 function App() {
   const [counter, setCounter] = useState(0);
