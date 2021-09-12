@@ -1,5 +1,7 @@
 import './App.css';
 import Button from './components/Button';
+import Header from './components/Header';
+import InputSearch from './components/InputSearch';
 import List from './components/List';
 import { useState } from 'react';
 import Dropdown from './components/Dropdown';
@@ -23,6 +25,7 @@ function App() {
   }
   return (
     <div className="App">
+      <Header name="Mi diccionario online." />
       { counter }
 
       <div>
@@ -30,11 +33,14 @@ function App() {
         <Button text="+" setClick={handleSum} />
         <Button text="+5" setClick={() => handleSumByNumber(5)} />
       </div>
+
+      <br />
+      <InputSearch placeholder="Buscar..." />
+        
       <div>
         <List></List>
         <Dropdown></Dropdown>
       </div>
-      
     </div>
   );
 }
