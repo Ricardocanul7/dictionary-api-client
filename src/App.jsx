@@ -1,5 +1,6 @@
 import './App.css';
 import Button from './components/Button';
+import Header from './components/Header';
 import { useState } from 'react';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header name="Mi diccionario online." />
       { counter }
 
       <div>
