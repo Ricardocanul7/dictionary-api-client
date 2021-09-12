@@ -1,6 +1,7 @@
 import './App.css';
 import Button from './components/Button';
 import List from './components/List';
+import InputSearch from './components/InputSearch';
 import { useState } from 'react';
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
     setCounter(counter + number);
   }
   const handleOptionSelect = () =>{
-    
+
   }
   return (
     <div className="App">
@@ -31,7 +32,9 @@ function App() {
       </div>
       <div>
         <List></List>
+        <InputSearch></InputSearch>
       </div>
+      
     </div>
   );
 }
