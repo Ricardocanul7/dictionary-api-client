@@ -28,6 +28,10 @@ function App() {
   const handleOptionSelect = () =>{
 
   };
+
+  const handleSearchValue = (value) => {
+    console.log(value);
+  }
   
   return (
     <div className="App">
@@ -42,7 +46,7 @@ function App() {
 
       <br />
       <CardInfo />
-      <InputSearch placeholder="Buscar..." />
+      <InputSearch onSearch={handleSearchValue} placeholder="Buscar..." />
         
       <div>
         <List></List>
