@@ -6,6 +6,8 @@ import InputSearch from './components/InputSearch';
 import List from './components/List';
 import Dropdown from './components/Dropdown';
 import './App.css';
+import GroupButton from "./components/GroupButton";
+import GroupButtonItem from "./components/GroupButtonItem";
 
 
 function App() {
@@ -26,6 +28,10 @@ function App() {
   const handleOptionSelect = () =>{
 
   };
+
+  const handleSearchValue = (value) => {
+    console.log(value);
+  }
   
   return (
     <div className="App">
@@ -40,11 +46,18 @@ function App() {
 
       <br />
       <CardInfo />
-      <InputSearch placeholder="Buscar..." />
+      <InputSearch onSearch={handleSearchValue} placeholder="Buscar..." />
         
       <div>
         <List></List>
         <Dropdown></Dropdown>
+
+        <GroupButton>
+          <GroupButtonItem value="+"/>
+          <GroupButtonItem value="-"/>
+          <GroupButtonItem value="+5"/>
+          <GroupButtonItem value="+5"/>
+        </GroupButton>
       </div>
     </div>
   );

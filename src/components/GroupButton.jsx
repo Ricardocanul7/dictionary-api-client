@@ -1,12 +1,11 @@
 import React from "react";
+import GroupButtonItem from "./GroupButtonItem";
 import "./styles/GroupButton.css";
-const GroupButton = () => {
+const GroupButton = ({children}) => {
   return (
     <>
       <div class="btn-group">
-        <button class="btn btn-primary">+</button>
-        <button class="btn btn-primary">-</button>
-        <button class="btn btn-primary">+5</button>
+        {children}
       </div>
     </>
   );
