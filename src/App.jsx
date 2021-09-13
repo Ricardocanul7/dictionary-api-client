@@ -36,7 +36,20 @@ function App() {
       label: "Prueba 2",
     },
   ]
-
+  const dropdownList=[
+    {
+      value: "1",
+      label: "Item 1",
+    },
+    {
+      value: "2",
+      label: "Item 2",
+    },
+    {
+      value: "3",
+      label: "Item 3",
+    },
+  ];
   const handleSum = () => {
     setCounter(counter + 1);
   }
@@ -74,7 +87,7 @@ function App() {
         <Select items={options} name="Select 1" onSelected={handleOnSelected} />
         <Select items={options2} name="Select 2" onSelected={handleOnseleted2} />
 
-        <Dropdown items={options2} name="Dropdown 2" onSelected={handleDropdown}/>
+        <Dropdown items={dropdownList} name="Dropdown 1" onSelected={handleDropdown}/>
       </div>
       
     </div>

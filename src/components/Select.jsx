@@ -7,6 +7,7 @@ const Select = ({ items, name, onSelected}) => {
 
   const handleOnChange = (e) => {
     onSelected(e.target.value);
+    setSelected(e.target.value);
   }
 
   return (
