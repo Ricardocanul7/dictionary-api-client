@@ -26,4 +26,15 @@
     padding: 0 15px;
     color: #fff;
     background: linear-gradient(70deg, rgb(194, 113, 237), rgb(101, 73, 221));
+    transition: ease-in-out .3s;
+}
+
+.button:hover{
+    filter: brightness(125%);
+}
+
+.search_container{
+    display: flex;
+    justify-content: space-around;
+    width: fit-content;
 }

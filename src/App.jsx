@@ -1,121 +1,75 @@
 import { useState } from "react";
-import CardInfo from "./components/Card";
-import Button from './components/Button';
-import Select from './components/Select';
 import Header from './components/Header';
 import InputSearch from './components/InputSearch';
+import CardInfo from "./components/Card";
 import Dropdown from './components/Dropdown';
-import GroupButton from "./components/GroupButton";
-import GroupButtonItem from "./components/GroupButtonItem";
+import axios from "axios";
+import alertify from 'alertifyjs';
+import 'alertifyjs/build/css/alertify.min.css';
+import 'alertifyjs/build/css/themes/default.min.css';
 import './App.css';
 
 
 function App() {
-  const [counter, setCounter] = useState(0);
+  const [results, setResults] = useState([]);
+  const [language, setLanguage] = useState('es');
 
-  const options = [
+  const languages = [
     {
-      value: "1",
-      label: "Option 1",
+      value: 'es',
+      label: 'Español'
     },
     {
-      value: "2",
-      label: "Option 2",
-    },
-    {
-      value: "3",
-      label: "Option 3",
-    },
-    {
-      value: "4",
-      label: "Option  4",
-    },
-  ];
-
-  const options2 = [
-    {
-      value: "1",
-      label: "Prueba 1",
-    },
-    {
-      value: "2",
-      label: "Prueba 2",
-    },
+      value : 'en',
+      label : 'English'
+    }
   ]
-  const dropdownList=[
-    {
-      value: "1",
-      label: "Item 1",
-    },
-    {
-      value: "2",
-      label: "Item 2",
-    },
-    {
-      value: "3",
-      label: "Item 3",
-    },
-  ];
-  const handleSum = () => {
-    setCounter(counter + 1);
-  };
-
-  const handleRest = () => {
-    setCounter(counter - 1);
-  };
-
-  const handleSumByNumber = (number) => {
-    setCounter(counter + number);
-  }
-
-  const handleOnSelected = (value) => {
-    console.log("Select 1 " + value);
-  }
-
-  const handleOnseleted2 = (value) => {
-    console.log("Select 2 " + value);
-  }
-
-  const handleDropdown = (value) => {
-    console.log(value);
-  }
-  
-  const handleOptionSelect = () =>{
-
-  };
 
   const handleSearchValue = (value) => {
-    console.log(value);
+    if(value !== ""){
+      axios.get(`https://api.dictionaryapi.dev/api/v2/entries/${language}/${value}`)
+      .then( response => {
+        console.log(response.data);
+
+        setResults(response.data);
+      }).catch( err => {
+        alertify.error(`TITLE ${err.response.data.title} \nMESSAGE: ${err.response.data.message}`);
+      });
+    }else{
+      alertify.warning("Debes llenar el campo de busqueda");
+      setResults([]);
+    }
+    
+  }
+
+  const handleOnLanguageSelect = (value) => {
+    setLanguage(value);
   }
   
   return (
     <div className="App">
       <Header name="Mi diccionario online." />
-      { counter }
 
-      <div>
-        <Button text="-" setClick={handleRest} />
-        <Button text="+" setClick={handleSum} />
-        <Button text="+5" setClick={() => handleSumByNumber(5)} />
+      <div className="header-container">
+        <Dropdown items={ languages } onSelected={ handleOnLanguageSelect } label="Language"/>
+
+        <InputSearch onSearch={ handleSearchValue } placeholder="Search any word" hasResetButton={true} />
       </div>
 
-      <br />
-      <CardInfo />
-      <InputSearch onSearch={handleSearchValue} placeholder="Buscar..." />
-        
-      <div>
-        <Select items={options} name="Select 1" onSelected={handleOnSelected} />
-        <Select items={options2} name="Select 2" onSelected={handleOnseleted2} />
+      
 
-        <Dropdown items={dropdownList} name="Dropdown 1" onSelected={handleDropdown}/>
-
-        <GroupButton>
-          <GroupButtonItem value="+"/>
-          <GroupButtonItem value="-"/>
-          <GroupButtonItem value="+5"/>
-          <GroupButtonItem value="+5"/>
-        </GroupButton>
-      </div>
+      <center>
+        <h2>Resultados</h2>
+        {
+          results !== undefined || results.length > 0 
+          ?
+          results.map( (item, index) => {
+            return <CardInfo key={index} word={ item.word } meanings={ item.meanings[0].definitions } />
+          } )
+          :
+          'No hay elementos'
+        }
+      </center>
     </div>
   );
 }

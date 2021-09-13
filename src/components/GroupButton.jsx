@@ -1,6 +1,6 @@
 import React from "react";
-import GroupButtonItem from "./GroupButtonItem";
 import "./styles/GroupButton.css";
+
 const GroupButton = ({children}) => {
   return (
     <>

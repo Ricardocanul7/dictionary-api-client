@@ -1,20 +1,17 @@
 import React from 'react'
 import { useState } from 'react/cjs/react.development';
 import './styles/Dropdown.css'
-const Dropdown = ({ items, name, onSelected }) => {
-
-    const [dropdownSelected, setDropdownSelected]=useState("1");
+const Dropdown = ({ items, label = "Select an option", onSelected }) => {
 
     const [openMenu, setOpenMenu] = useState(false);
 
-    const handleOnClick = (e) => {
-        onSelected(e.target.value);
-        setDropdownSelected(e.target.value);
-        setButtonText(e.target.innerHTML);
+    const handleOnClick = (item) => {
+        onSelected(item.value);
+        setButtonText(item.label);
         setOpenMenu(!openMenu);
     }
 
-    const [buttonText, setButtonText] = useState("Selecciona una opcion");
+    const [buttonText, setButtonText] = useState(label);
 
     return (
         <>
@@ -25,7 +22,7 @@ const Dropdown = ({ items, name, onSelected }) => {
                         <ul>
                             {items.map((option) => {
                                 
-                                return <li key={option.value} value={option.value} onClick={handleOnClick}>{option.label}</li>
+                                return <li key={option.value} value={option.value} onClick={() => handleOnClick(option)}>{option.label}</li>
                                 })
                             }
                         </ul>
