@@ -1,0 +1,43 @@
+.btn-group * {
+    float: left;
+    padding: 10px 25px !important;
+    /* Some padding */
+}
+
+.btn-group button:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.btn-group button:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.btn-primary:hover {
+    filter: brightness(125%);
+}
+
+.btn-primary:active {
+    transform: scale(0.99);
+}
+
+.btn {
+    text-decoration: none;
+    /* border-radius: 3px; */
+    /* padding: 20px 15px; */
+    padding: 10px;
+    display: inline-block;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    outline: none;
+    border-style: none;
+}
+
+.btn-primary {
+    background: linear-gradient(70deg,
+            rgb(194, 113, 237),
+            rgb(101, 73, 221));
+    color: #fff;
+}
