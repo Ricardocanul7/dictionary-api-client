@@ -22,9 +22,6 @@
     filter: brightness(125%);
 }
 
-.styleButton:active {
-    transform: scale(.99);
+.styleButton:active{
+    transform: scale(.75);
 }
-
-
-
