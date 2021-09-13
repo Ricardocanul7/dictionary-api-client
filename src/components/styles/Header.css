@@ -1,0 +1,19 @@
+.header{
+    background-color: #6443D9;
+    height: 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px;
+}
+
+.name{
+    color: #fff;
+    margin: 0;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
